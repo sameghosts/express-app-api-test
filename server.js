@@ -15,30 +15,31 @@ app.use(require('morgan')('dev'));
 app.get('/', (req, res) =>{
   res.render('index');
 });
-
 //results
   // primary search tool to whos view /controller make a partial
 app.get('/results', (req, res) =>{
-  // let queryTerm= req.query;
-  //I basically hacked this from OMDB you want to check your api to see what kind of search parameters you can get or add to the argument. for my magic API i know name is something i can specifiy
+  
   // console.log(queryTerm)
 //search query types
   //multiversid
   //name
   //color
-  let mtgURLname = `https://api.magicthegathering.io/v1/cards?name=${req.query.name}&page=1&pageSize=20`;
-  let mtgURLmultiverseid = `https://api.magicthegathering.io/v1/cards?multiverseid=${req.query.name}&page=1&pageSize=20`;
-  // let mtgURLcolor = `https://api.magicthegathering.io/v1/cards?name=${req.query.name}&page=1&pageSize=20`;
-  let mtgURLtype = `https://api.magicthegathering.io/v1/cards?type=${req.query.name}&set=IKO&page=1&pageSize=20`;
-  // fix let mtgURLset = `https://api.magicthegathering.io/v1/cards?name=${req.query.name}&page=1&pageSize=20`;
+  let mtgURL = `https://api.magicthegathering.io/v1/cards?${req.query.select}=${req.query.value}&page=1&pageSize=20`;
   
   
 
-  axios.get(mtgURLname).then(response => {
+  axios.get(mtgURL).then(response => {
   // axios.get(mtgURLmultiverseid).then(response => {
     //lol quickchange
-    //
-    console.log(req.query.name);
+    let valueSel;
+    // let getOption =  () => {
+    //   // selectElement= document.querySelector('#selectpick');
+    //   valueSel = selectElement.options[selectElement.selectedIdex].value
+    // };
+    // getOption();
+    // console.log(req.body.select);
+    console.log(req.query);
+    console.log(req.query.value);
     // console.log(response);
     // console.log(response.data);
 //results view
