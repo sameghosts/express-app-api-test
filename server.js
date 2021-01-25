@@ -29,40 +29,42 @@ app.get('/results', (req, res) =>{
   let mtgURLname = `https://api.magicthegathering.io/v1/cards?name=${req.query.name}&page=1&pageSize=20`;
   let mtgURLmultiverseid = `https://api.magicthegathering.io/v1/cards?multiverseid=${req.query.name}&page=1&pageSize=20`;
   // let mtgURLcolor = `https://api.magicthegathering.io/v1/cards?name=${req.query.name}&page=1&pageSize=20`;
-  // fix let mtgURLtype = `https://api.magicthegathering.io/v1/cards?name=${req.query.name}&page=1&pageSize=20`;
+  let mtgURLtype = `https://api.magicthegathering.io/v1/cards?type=${req.query.name}&set=IKO&page=1&pageSize=20`;
   // fix let mtgURLset = `https://api.magicthegathering.io/v1/cards?name=${req.query.name}&page=1&pageSize=20`;
   
-  // Multiverse Id Card Type queries 
-  //creature (leg)
-  // winota multiverse id
-  // 479736
+  
 
-//creature
-// narset IKO
-// 479715
-
-//sourcery 
-
-//instant
-
-//enchantment
-
-//planeswalker
-
-  axios.get(mtgURLmultiverseid).then(response => {
-    // var mtg = response.data
-    // console.log(req.params);
+  axios.get(mtgURLname).then(response => {
+  // axios.get(mtgURLmultiverseid).then(response => {
+    //lol quickchange
+    //
     console.log(req.query.name);
     // console.log(response);
     // console.log(response.data);
 //results view
-  res.send(response.data);
-  // res.render('cards', {data: response.data})
+  // res.send(response.data);
+  res.render('cards', {data: response.data})
   }).catch(err =>{
     console.log(err);
   });
 })
 
+//details route
+app.get('/cards/:multiverseId', (req, res) =>{
+  console.log(req.params.multiverseId);
+  // res.send(req.params.multiverseId);
+  let multiIdURL = `https://api.magicthegathering.io/v1/cards?multiverseid=${req.params.multiverseId}`
+
+  axios.get(multiIdURL).then(response => {
+    //lol quickchange
+    // console.log(response);
+    // console.log(response.data);
+  // res.send(response.data);
+  res.render('details', {data: response.data})
+  }).catch(err =>{
+    console.log(err);
+  });
+})
 
 
 

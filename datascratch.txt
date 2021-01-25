@@ -1,0 +1,41 @@
+######## QUERIES #######
+// Multiverse Id Card Type queries 
+  //creature (leg)
+  // winota multiverse id
+  // 479736
+
+// creature adventure !!!!!!!
+  //adventure creature comes as two objects in array / separate spells in one multiverse id
+  //bonecrusher giant 
+  // 473077
+
+// planeswalker
+// narset IKO
+// 479715
+
+// sorcery 
+   (old simple) fireball 2nd edition
+   794
+
+   carthartic reunion IKO sor 1R
+   479630
+
+//instant
+anticipate - instant IKO 1U
+479560
+zenith flare (lol) - iko - 2RW
+442033
+
+//enchantment
+bastion of rememberance - ench IKO 2B
+479593
+
+
+####### DATA ##########
+
+card data to pull for results:
+cards[]
+~~~ creature ~~~~
+name 
+  - data.cards.name
+  - data.cards[0].name
